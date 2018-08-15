@@ -1,9 +1,12 @@
 package com.luying.service;
 
+import org.springframework.stereotype.Service;
+
 /**
  * @description:
  * @author: lijian
  * @create: 2018-08-15
  **/
-public interface BookService {
+@Service
+public class BookService {
 }
