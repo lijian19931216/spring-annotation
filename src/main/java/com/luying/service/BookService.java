@@ -9,4 +9,7 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class BookService {
+    public String sayHello(String name){
+        return "service : hello "+name;
+    }
 }

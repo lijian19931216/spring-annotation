@@ -1,6 +1,7 @@
 package com.luying.config;
 
 import com.luying.bean.Person;
+import com.luying.bean.PersonFactory;
 import com.luying.condition.IfWindows;
 import com.luying.condition.MyImportSelector;
 import org.springframework.context.annotation.*;
@@ -35,7 +36,9 @@ public class MyConfig {
         System.out.println("getPerson1被创建------");
         return new Person("张三", 25);
     }
-
-
+    @Bean
+    public PersonFactory getFactory(){
+        return new PersonFactory();
+    }
 
 }

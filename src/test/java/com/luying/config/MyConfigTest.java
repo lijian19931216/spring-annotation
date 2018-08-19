@@ -1,14 +1,12 @@
 package com.luying.config;
 
+import com.luying.bean.Car;
 import com.luying.bean.Person;
-import com.luying.controller.BookController;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.Map;
-
 public class MyConfigTest {
-    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
+    /*AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
 
     @Test
     public void testScan() {//打印容器中注册的bean
@@ -17,7 +15,9 @@ public class MyConfigTest {
             System.out.println(name);
         }
         BookController bean = context.getBean(BookController.class);
-        System.out.println(bean+"----------------");
+      //  System.out.println(bean+"----------------");
+        System.out.println("类型是："+context.getBean("getFactory").getClass());
+        System.out.println("类型是："+context.getBean("&getFactory").getClass());
     }
 
     @Test
@@ -41,5 +41,28 @@ public class MyConfigTest {
         AnnotationConfigApplicationContext context1 = new AnnotationConfigApplicationContext(MyConfig.class);
         context1.getBean("pson666");
         context1.getBean("pson667");
+    }
+*/
+    @Test
+    public void testBeanLifeCycle() {
+        AnnotationConfigApplicationContext context1 = new AnnotationConfigApplicationContext(ConfigLifeCycle.class);
+        String[] definitionNames = context1.getBeanDefinitionNames();
+        for (String name : definitionNames) {
+            System.out.println(name);
+        }
+        context1.getBean(Car.class);
+        context1.close();
+
+    }
+    @Test
+    public void testBean() {
+        AnnotationConfigApplicationContext context= new AnnotationConfigApplicationContext(ConfigLifeCycle.class);
+        String[] definitionNames = context.getBeanDefinitionNames();
+        for (String name : definitionNames) {
+            System.out.println(name);
+        }
+        System.out.println("---"+(Person) context.getBean(Person.class));
+
+
     }
 }

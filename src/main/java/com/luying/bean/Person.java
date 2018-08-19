@@ -1,11 +1,14 @@
 package com.luying.bean;
 
+import org.springframework.beans.factory.annotation.Value;
+
 /**
  * @description:
  * @author: lijian
  * @create: 2018-08-14
  **/
 public class Person {
+    @Value("${person.name}")
     private String name;
     private int age;
 
